@@ -1,9 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
+// Used by react-router-dom
+// So you dont have to install
+import { createMemoryHistory } from 'history'
 
 const mount = el => {
-  ReactDOM.render(<App />, el)
+  const history = createMemoryHistory()
+
+  ReactDOM.render(<App history={history} />, el)
 }
 
 if (process.env.NODE_ENV === 'development') {
