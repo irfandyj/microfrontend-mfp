@@ -5,8 +5,10 @@ import App from './App.js'
 // So you dont have to install
 import { createMemoryHistory } from 'history'
 
-const mount = el => {
+const mount = (el, { onNavigate }) => {
   const history = createMemoryHistory()
+
+  history.listen(onNavigate)
 
   ReactDOM.render(<App history={history} />, el)
 }
