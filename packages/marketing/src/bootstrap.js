@@ -8,7 +8,10 @@ import { createMemoryHistory } from 'history'
 const mount = (el, { onNavigate }) => {
   const history = createMemoryHistory()
 
-  history.listen(onNavigate)
+  // Temporary fix, will update again later
+  if (onNavigate) {
+    history.listen(onNavigate)
+  }
 
   ReactDOM.render(<App history={history} />, el)
 }
@@ -16,7 +19,7 @@ const mount = (el, { onNavigate }) => {
 if (process.env.NODE_ENV === 'development') {
   const el = document.getElementById('_marketing-dev-root')
   if (el) {
-    mount(el)
+    mount(el, {})
   }
 }
 
