@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import App from './App.js'
 // Used by react-router-dom
 // So you dont have to install
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory, createBrowserHistory } from 'history'
 
-const mount = (el, { onNavigate }) => {
-  const history = createMemoryHistory()
+const mount = (el, { onNavigate, defaultHistory }) => {
+  const history = defaultHistory || createMemoryHistory()
 
   // Temporary fix, will update again later
   if (onNavigate) {
@@ -34,7 +34,7 @@ const mount = (el, { onNavigate }) => {
 if (process.env.NODE_ENV === 'development') {
   const el = document.getElementById('_marketing-dev-root')
   if (el) {
-    mount(el, {})
+    mount(el, { defaultHistory: createBrowserHistory() })
   }
 }
 
