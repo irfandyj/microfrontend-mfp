@@ -5,7 +5,12 @@ import App from './App.js'
 // So you dont have to install
 import { createMemoryHistory, createBrowserHistory } from 'history'
 
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, {
+  onNavigate,
+  onSignIn,
+  defaultHistory,
+  initialPath
+}) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   })
@@ -15,7 +20,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     history.listen(onNavigate)
   }
 
-  ReactDOM.render(<App history={history} />, el)
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el)
 
   return {
     onParentNavigate (location) {

@@ -20,6 +20,9 @@ export default () => {
           console.log('Noticed navigation in Marketing')
           history.push(nextPathName)
         }
+      },
+      onSignIn () {
+        console.log('User signed in')
       }
     })
 
