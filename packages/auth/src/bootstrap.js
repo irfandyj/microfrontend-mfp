@@ -5,8 +5,10 @@ import App from './App.js'
 // So you dont have to install
 import { createMemoryHistory, createBrowserHistory } from 'history'
 
-const mount = (el, { onNavigate, defaultHistory }) => {
-  const history = defaultHistory || createMemoryHistory()
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries: [initialPath]
+  })
 
   // Temporary fix, will update again later
   if (onNavigate) {
