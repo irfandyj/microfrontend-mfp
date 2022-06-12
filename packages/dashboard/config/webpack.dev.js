@@ -13,6 +13,9 @@ const devConfig = {
     port: 8083,
     historyApiFallback: {
       index: '/index.html'
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*'
     }
   },
   plugins: [
